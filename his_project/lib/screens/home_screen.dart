@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+// import 'package:shake/shake.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -13,6 +14,12 @@ class _HomeScreenState extends State<HomeScreen> {
   
   late CollectionReference members;
   String point = "";
+
+  // ShakeDetector detector = ShakeDetector.autoStart(
+  //   onPhoneShake: () {
+  //      point++;
+  //   }
+  // );
 
   @override
   Widget build(BuildContext context) {
@@ -98,11 +105,11 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 const Text(
-                  "+300",
+                  "30",
                   style: stats,
                 ),
                 const SizedBox(height: 5.0),
-                Text("Distance".toUpperCase())
+                Text("Distance(KM)".toUpperCase())
               ],
             ),
           ),
@@ -116,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 const Text(
-                  "+1200",
+                  "1200",
                   style: stats,
                 ),
                 const SizedBox(height: 5.0),

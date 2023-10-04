@@ -2,9 +2,19 @@ import 'package:flutter/material.dart';
 
 import '../res/animation1.dart';
 
-class ShopScreen extends StatelessWidget {
-
+class ShopScreen extends StatefulWidget {
   const ShopScreen({super.key});
+
+  @override
+  State<ShopScreen> createState() => _ShopScreen();
+  
+  }
+
+class _ShopScreen extends State<ShopScreen> {
+
+  int count = 0;
+  int price = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,15 +31,17 @@ class ShopScreen extends StatelessWidget {
                 },
               ),
             ),
-            _checkoutSection()
+            
+            // _checkoutSection()
           ],
         ));
   }
 
   Widget cartItems(int index) {
+
     return Container(
       padding: const EdgeInsets.all(0),
-      margin: const EdgeInsets.all(10),
+      margin: const EdgeInsets.all(1),
       height: 140,
       child: Row(
         children: <Widget>[
@@ -50,24 +62,24 @@ class ShopScreen extends StatelessWidget {
                     children: <Widget>[
                       Flexible(
                         child: Text(
-                          "Item 1$index",
+                          "Item $index",
                           overflow: TextOverflow.fade,
                           softWrap: true,
                           style: const TextStyle(
                               fontWeight: FontWeight.w600, fontSize: 15),
                         ),
                       ),
-                      SizedBox(
-                        width: 50,
-                        child: IconButton(
-                          onPressed: () {
-                            print("Button Pressed");
-                          },
-                          color: Colors.red,
-                          icon: const Icon(Icons.delete),
-                          iconSize: 20,
-                        ),
-                      )
+                      // SizedBox(
+                      //   width: 50,
+                      //   child: IconButton(
+                      //     onPressed: () {
+                      //       print("Button Pressed");
+                      //     },
+                      //     color: Colors.red,
+                      //     icon: const Icon(Icons.delete),
+                      //     iconSize: 20,
+                      //   ),
+                      // )
                     ],
                   ),
                   const Row(
@@ -83,14 +95,14 @@ class ShopScreen extends StatelessWidget {
                       )
                     ],
                   ),
-                  const Row(
+                  Row(
                     children: <Widget>[
-                      Text("Sub Total: "),
-                      SizedBox(
+                      const Text("Total: "),
+                      const SizedBox(
                         width: 5,
                       ),
-                      Text('\$400',
-                          style: TextStyle(
+                      Text('\$$price',
+                          style: const TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w300,
                             color: Colors.orange,
@@ -107,7 +119,11 @@ class ShopScreen extends StatelessWidget {
                       Row(
                         children: <Widget>[
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              setState(() {
+                                minus();
+                              });
+                            },
                             splashColor: Colors.redAccent.shade200,
                             child: Container(
                               decoration: BoxDecoration(
@@ -126,17 +142,21 @@ class ShopScreen extends StatelessWidget {
                           const SizedBox(
                             width: 4,
                           ),
-                          const Card(
+                          Card(
                             child: Padding(
-                              padding: EdgeInsets.all(5),
-                              child: Text('2'),
+                              padding: const EdgeInsets.all(5),
+                              child: Text('$count'),
                             ),
                           ),
                           const SizedBox(
                             width: 4,
                           ),
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              setState(() {
+                                add();
+                              });
+                            },
                             splashColor: Colors.lightBlue,
                             child: Container(
                               decoration: BoxDecoration(
@@ -165,54 +185,66 @@ class ShopScreen extends StatelessWidget {
     );
   }
 
-  Widget _checkoutSection() {
-    return Material(
-      color: Colors.black12,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          const Padding(
-              padding: EdgeInsets.only(top: 10, left: 10, right: 10),
-              child: Row(
-                children: <Widget>[
-                  Text(
-                    "Checkout Price:",
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-                  ),
-                  Spacer(),
-                  Text(
-                    "Rs. 5000",
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                  )
-                ],
-              )),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Material(
-              color: Colors.red,
-              elevation: 1.0,
-              child: InkWell(
-                splashColor: Colors.redAccent,
-                onTap: () {},
-                child: const SizedBox(
-                  width: double.infinity,
-                  child: Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: Text(
-                      "Checkout",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
+  // Widget _checkoutSection() {
+  //   return Material(
+  //     color: Colors.black12,
+  //     child: Column(
+  //       crossAxisAlignment: CrossAxisAlignment.start,
+  //       children: <Widget>[
+  //         const Padding(
+  //             padding: EdgeInsets.only(top: 10, left: 10, right: 10),
+  //             child: Row(
+  //               children: <Widget>[
+  //                 Text(
+  //                   "Checkout Price:",
+  //                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+  //                 ),
+  //                 Spacer(),
+  //                 Text(
+  //                   "Rs. 5000",
+  //                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+  //                 )
+  //               ],
+  //             )),
+  //         Padding(
+  //           padding: const EdgeInsets.all(10.0),
+  //           child: Material(
+  //             color: Colors.red,
+  //             elevation: 1.0,
+  //             child: InkWell(
+  //               splashColor: Colors.redAccent,
+  //               onTap: () {},
+  //               child: const SizedBox(
+  //                 width: double.infinity,
+  //                 child: Padding(
+  //                   padding: EdgeInsets.all(10.0),
+  //                   child: Text(
+  //                     "Checkout",
+  //                     textAlign: TextAlign.center,
+  //                     style: TextStyle(
+  //                         color: Colors.white,
+  //                         fontSize: 18,
+  //                         fontWeight: FontWeight.w700),
+  //                   ),
+  //                 ),
+  //               ),
+  //             ),
+  //           ),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
+
+  void add() {
+    count++;
+    price = 200;
+    price = price*count;
+  }
+  void minus() {
+    count--;
+    price = 200;
+    price = price*count;
   }
 }
+

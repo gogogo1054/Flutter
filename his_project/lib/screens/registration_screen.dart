@@ -233,7 +233,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 void signUp(String id, String nick, String email, String pw) async {
     if (_formKey.currentState!.validate()) {
       
-      num point = 0;
+      String point = "";
       var documentSnapshot = await members.doc(id).get();
 
       if(documentSnapshot.data() == null) {
