@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'bottom.dart';
 import 'top.dart';
+import 'view.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -37,7 +38,10 @@ class _HomeScreenState extends State<HomeScreen>{
                   icon: const Icon(Icons.account_circle_rounded,
                   size: 27.0),
                   onPressed: () {
-                    print('333');
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const ViewPage(),) 
+                    );
                   },
                 ),
               ),

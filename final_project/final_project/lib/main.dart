@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'home.dart';
 import 'intro.dart';
+import 'view.dart';
 
 void main() {
   const Intro();
@@ -29,7 +30,7 @@ Widget _splashLoadingWidget(AsyncSnapshot<Object?> snapshot) {
       Widget build(BuildContext context) {
         return MaterialApp(
         home: FutureBuilder(
-        future: Future.delayed(const Duration(seconds: 3), () => "Intro Completed."),
+        future: Future.delayed(const Duration(seconds: 5), () => "Intro Completed."),
         builder: (context, snapshot) {
           return AnimatedSwitcher(
               duration: const Duration(milliseconds: 0),

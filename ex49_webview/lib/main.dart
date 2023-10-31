@@ -85,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
         );
       }
     )
-    ..loadRequest(Uri.parse('https://map.kakao.com'));
+    ..loadRequest(Uri.parse('https://192.168.0.53:8081/'));
     // ..loadFlutterAsset("assets/html/my.html");
   }
 ///////////////////////////////////////////////////////////////////////////////////////////// 
