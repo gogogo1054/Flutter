@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'home.dart';
 import 'intro.dart';
-import 'view.dart';
 
 void main() {
   const Intro();
@@ -29,6 +28,7 @@ Widget _splashLoadingWidget(AsyncSnapshot<Object?> snapshot) {
       @override
       Widget build(BuildContext context) {
         return MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: FutureBuilder(
         future: Future.delayed(const Duration(seconds: 5), () => "Intro Completed."),
         builder: (context, snapshot) {

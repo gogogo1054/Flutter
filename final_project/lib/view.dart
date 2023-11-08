@@ -30,7 +30,7 @@ class _ViewPage extends State<ViewPage> {
         );
       }
     )
-    ..loadRequest(Uri.parse('http://10.0.2.2:8080/'));  //  https URL
+    ..loadRequest(Uri.parse('http://10.0.2.2:8080/login'));  //  https URL
   }
 
   @override
